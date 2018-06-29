@@ -1,3 +1,10 @@
+'''
+This file contains the postman class that handles the sending of mails via
+the gmail smtp server, it takes a single input mail during input and then can
+send it to the email id sent to the sendmessage method.
+'''
+
+
 import smtplib
 from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
@@ -25,9 +32,9 @@ class PostMan:
 	def sendMessage(self,toU, toN):
 		msg = MIMEMultipart()
 		msg['From'] = self.fromU
-		msg['To'] = self.toU
+		msg['To'] = toU
 		msg['Subject'] = self.sub
-		body = self.body.format(self.toN)
+		body = self.body.format(toN)
 		if self.attach:
 			msg.attach(MIMEText(body, 'plain'))
 			filename = self.attach
@@ -38,7 +45,7 @@ class PostMan:
 			p.add_header('Content-Disposition', "attachment; filename= %s" % filename)
 			msg.attach(p)
 		text = msg.as_string()
-		return self.server.sendmail(self.fromU, self.toU, text)
+		return self.server.sendmail(self.fromU, toU, text)
 
 	def quit(self):
 		self.password = None

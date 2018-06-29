@@ -18,6 +18,9 @@ if __name__ == '__main__':
 	choice = -1
 	while choice not in range(len(csv_files)):
 		choice = int(input('Choose a csv file to read from :'))
-	people = get_people(csv_files[choice],0,4)
-	print(people)
+	i = input("send from :")
+	j = input("to :")
+	people = get_people(csv_files[choice],i,j)
+	for i in people:
+		postman.sendMessage(i["email"],i["company"])
 

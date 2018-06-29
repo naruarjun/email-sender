@@ -1,3 +1,9 @@
+'''
+This file implements multiple helper functions that receive, extract, read and
+do other stuff with the data
+
+'''
+
 import pandas as pd
 import json
 import os
