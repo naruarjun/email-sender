@@ -9,14 +9,14 @@ def get_files(path = None):
 	else:
 		return os.listdir(os.path.dirname(os.path.realpath(__file__)))
 
-def get_people(a,i,j):
-	a = pd.read_csv(a)
-	data = a.loc[i:j,["name","email"]] 
+def get_people(file,i = 0,j = -1):
+	file = pd.read_csv(file)
+	data = file.loc[i:j,["company","email"]] 
 	return data
 
 
 def filter_files(files, extension):
-	r = re.compile(extension)
+	r = re.compile('.*'+extension)
 	return list(filter(r.match, files))
 
 
