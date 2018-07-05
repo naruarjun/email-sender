@@ -27,6 +27,7 @@ def filter_files(files, extension):
 
 
 def read():
+
 	if input("try to read from saved.json? (y/n)").lower() == 'y':
 		try:
 			data = open('saved.json','r')
@@ -38,8 +39,10 @@ def read():
 			return (fromU, sub, body, attach)
 		except:
 			print("couldn't read data from saved.json, please enter data again")
+	
 	fromU = input("From :")
 	sub = input("sub :")
+	
 	if input("enter body from file? (y/n) ").lower() == 'y':
 		if input("enter a path? (y/n) ").lower() == 'y':
 			path = input('path :')
