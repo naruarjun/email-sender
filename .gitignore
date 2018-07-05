@@ -5,3 +5,8 @@ saved.json
 *.xls
 *.xlsx
 *.csv
+logs.txt
+body.txt
+.RData
+.Rhistory
+*.pdf

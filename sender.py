@@ -23,15 +23,13 @@ if __name__ == '__main__':
 	choice = -1
 	while choice not in range(len(csv_files)):
 		choice = int(input('Choose a csv file to read from :'))
-	i = input("send from :")
-	j = input("to :")
+	i = int(input("send from number :"))
+	j = int(input("to number:"))
 	people = get_people(csv_files[choice],i,j)
 	print("Starting mailing loop, output redirected to logs.txt")
 	
 	# Redirect output to file
-	with open("logs.txt", 'w') as logs_file:
-		sys.stdout = logs_file
-		print("Redirecting STDOUT to logs file\n\n")
+	with open("logs.txt", 'a') as logs_file:
 			
 		# Number of mails to send
 		count_mails = len(people)
@@ -40,15 +38,16 @@ if __name__ == '__main__':
 		# 'people' array
 		for mail_num in range(0,count_mails):
 
+			print('mail {} of {}'.format(mail_num + 1, count_mails))
 			# Log mail details
-			print("Sending mail {} of {}".format(mail_num + 1, count_mails))
-			print("To: {}\nCompany: {}".format(people[mail_num]["email"], people[mail_num]["company"]))
+			logs_file.write("Sending mail {} of {}".format(mail_num + 1, count_mails))
+			logs_file.write("To: {}\nCompany: {}".format(people.loc[mail_num,"email"], people.loc[mail_num,"company"]))
 			
 			# Send Mail
-			postman.sendMessage(people[mail_num]["email"], people[mail_num]["company"])
+			postman.sendMessage(people.loc[mail_num,"email"], people.loc[mail_num,"company"])
 
 			# Confirm reciept
-			print("Sent\n")
+			logs_file.write("Sent\n")
 
 	# Quit server
 	postman.quit()

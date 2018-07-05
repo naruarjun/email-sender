@@ -1,9 +1,7 @@
-'''
-Requires R and Java to be installed to run.
-This script extracts data from excel files and puts valid email ids into
-the people.csv file.
+# Requires R and Java to be installed to run.
+# This script extracts data from excel files and puts valid email ids into
+# the people.csv file.
 
-'''
 
 needed.packages <- c("readxl","data.table")
 new.packages <- needed.packages[!(needed.packages %in% installed.packages()[,"Package"])]

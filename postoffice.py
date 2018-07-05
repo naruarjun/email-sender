@@ -29,12 +29,12 @@ class PostMan:
 		self.server.starttls()
 		self.server.login(self.fromU,self.password)
 
-	def sendMessage(self,toU, toN):
+	def sendMessage(self,toU, toC):
 		msg = MIMEMultipart()
 		msg['From'] = self.fromU
 		msg['To'] = toU
 		msg['Subject'] = self.sub
-		body = self.body.format(toN)
+		body = self.body.format(company = toC)
 		if self.attach:
 			msg.attach(MIMEText(body, 'plain'))
 			filename = self.attach

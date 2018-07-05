@@ -28,7 +28,7 @@ def filter_files(files, extension):
 
 def read():
 
-	if input("try to read from saved.json? (y/n)").lower() == 'y':
+	if input("try to read from saved.json? (y/n): ").lower() == 'y':
 		try:
 			data = open('saved.json','r')
 			d = json.load(data)
@@ -43,19 +43,19 @@ def read():
 	fromU = input("From :")
 	sub = input("sub :")
 	
-	if input("enter body from file? (y/n) ").lower() == 'y':
-		if input("enter a path? (y/n) ").lower() == 'y':
-			path = input('path :')
+	if input("enter body from file? (y/n): ").lower() == 'y':
+		if input("enter a path? (y/n): ").lower() == 'y':
+			path = input('path: ')
 			files = get_files(path)
 		else:
 			files = get_files()
 		text_files = filter_files(files, '\\.txt')
 		if len(text_files) > 0:
 			for i in range(len(text_files)):
-				print(i+1,'. ',text_files[i])
+				print(i,'. ',text_files[i])
 			choice = -1
 			while choice not in range(len(text_files)):
-				choice = int(input('choose file number to read body from :'))
+				choice = int(input('choose file number to read body from: '))
 			body = open(text_files[choice],'r').read()
 		else:
 			print("couldn't find any text files")
@@ -72,7 +72,7 @@ def read():
 		attach = files[choice]
 	else:
 		attach = None
-	if input('save to saved.json? (y/n) ').lower() == 'y':
+	if input('save to saved.json? (y/n): ').lower() == 'y':
 		d = {}
 		d['fromU'] = fromU
 		d['sub'] = sub
