@@ -40,14 +40,14 @@ if __name__ == '__main__':
 
 			print('mail {} of {}'.format(mail_num + 1, count_mails))
 			# Log mail details
-			logs_file.write("Sending mail {} of {}".format(mail_num + 1, count_mails))
-			logs_file.write("To: {}\nCompany: {}".format(people.loc[mail_num,"email"], people.loc[mail_num,"company"]))
+			logs_file.write("Sending mail {} of {}\n".format(mail_num + 1, count_mails))
+			logs_file.write("To: {}\nCompany: {}\n".format(people.loc[mail_num,"email"], people.loc[mail_num,"company"]))
 			
 			# Send Mail
 			postman.sendMessage(people.loc[mail_num,"email"], people.loc[mail_num,"company"])
 
 			# Confirm reciept
-			logs_file.write("Sent\n")
+			logs_file.write("Sent\n\n")
 
 	# Quit server
 	postman.quit()
